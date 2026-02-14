@@ -11,8 +11,7 @@
 开源协议：MIT License
 免责声明：本软件按"原样"提供，不作任何明示或暗示的担保
 修改记录：
-版本 0.9.0 2026-01-01 - 码上工坊 - 初始版本创建
-版本 0.9.1 2026-02-11 - 码上工坊 - 添加Logo缩放比例功能
+版本 0.9.0 2026-02-10 - 码上工坊 - 初始版本创建
 """
 
 import csv
@@ -442,11 +441,11 @@ class QRToolkit(QMainWindow):
         color_layout.addRow("渐变类型:", self.gradient_type_combo)
         color_group.setLayout(color_layout)
 
-        # ==================== Logo设置区域 - 添加缩放比例功能 ====================
+        # Logo设置区域
         logo_group = QGroupBox("Logo设置")
         logo_layout = QVBoxLayout()
 
-        # 第一行：路径和按钮
+        # 路径和按钮
         logo_path_layout = QHBoxLayout()
         self.logo_path_edit = QLineEdit()
         self.logo_path_edit.setPlaceholderText("Logo图片路径")
@@ -457,7 +456,7 @@ class QRToolkit(QMainWindow):
         logo_path_layout.addWidget(self.logo_browse_btn)
         logo_path_layout.addWidget(self.logo_clear_btn)
 
-        # 第二行：缩放比例
+        # 缩放比例
         logo_scale_layout = QHBoxLayout()
         logo_scale_layout.addWidget(QLabel("缩放比例:"))
 
@@ -482,7 +481,7 @@ class QRToolkit(QMainWindow):
         logo_scale_layout.addWidget(self.logo_scale_spin)
         logo_scale_layout.addWidget(self.logo_scale_slider, 1)  # 1表示拉伸因子
 
-        # 第三行：预览提示
+        # 预览提示
         logo_hint_label = QLabel("提示：过大的Logo会影响二维码的识别率")
         logo_hint_label.setStyleSheet("color: #666; font-size: 11px;")
         logo_hint_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
@@ -493,7 +492,6 @@ class QRToolkit(QMainWindow):
         logo_layout.addWidget(logo_hint_label)
 
         logo_group.setLayout(logo_layout)
-        # ==================== Logo设置区域结束 ====================
 
         # 其他设置区域
         other_group = QGroupBox("其他设置")
@@ -610,7 +608,6 @@ class QRToolkit(QMainWindow):
         """
         )
         self.camera_preview.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        # self.camera_preview.setText("摄像头预览")
         self.camera_preview.setText("摄像头预览区域\n点击'开始扫描'启动摄像头")
 
         camera_layout.addWidget(self.camera_preview)
@@ -1197,7 +1194,6 @@ END:VCARD"""
             self.type_combo.setCurrentText(QRCodeType.EMAIL.value)
             self.update_preview()
 
-    # ==================== 扫描功能 ====================
     @Slot(bool)
     def update_scan_mode(self, checked: bool) -> None:
         """更新扫描模式"""
@@ -1510,7 +1506,6 @@ END:VCARD"""
             clipboard.setText(data_item.text())
             QMessageBox.information(self, "成功", "数据已复制到剪贴板")
 
-    # ==================== 历史功能 ====================
     @Slot()
     def refresh_history(self) -> None:
         """刷新历史记录"""
@@ -1708,11 +1703,6 @@ END:VCARD"""
         # 刷新历史列表
         self.refresh_history()
 
-        # # 添加到数据库历史表
-        # self.database.add_history_record(
-        #     qr_data.id, operation, f"生成二维码: {qr_data.qr_type.value}"
-        # )
-
     def update_info_panel(self, qr_data: QRCodeData) -> None:
         """更新信息面板"""
         info_text = f"""
@@ -1877,7 +1867,6 @@ END:VCARD"""
         self.info_text.clear()
         self.status_bar.showMessage("已清空")
 
-    # ==================== 模板功能 ====================
     @Slot()
     def open_template_manager(self) -> None:
         """打开模板管理器"""
@@ -1936,7 +1925,6 @@ END:VCARD"""
                 # 如果转换失败，使用默认值
                 self.logo_scale_spin.setValue(20)
                 self.logo_scale_slider.setValue(20)
-        # ===================================================================
 
         self.status_bar.showMessage(f"已应用模板: {template.get('name', '未知')}")
 
@@ -1972,13 +1960,11 @@ END:VCARD"""
                     and self.current_qr_data.gradient_end
                     else None
                 ),
-                # ==================== 保存Logo缩放比例 ====================
                 "logo_scale": (
                     self.current_qr_data.logo_scale
                     if hasattr(self.current_qr_data, "logo_scale")
                     else 0.2
                 ),
-                # ===============================================================
             }
 
             if self.database.save_template(name, config):
@@ -2017,13 +2003,11 @@ END:VCARD"""
         default_format_combo.addItems(["PNG", "JPEG", "SVG", "PDF"])
         default_format_combo.setCurrentText(self.format_combo.currentText())
 
-        # ==================== 默认Logo缩放比例设置 ====================
         default_logo_scale_spin = QSpinBox()
         default_logo_scale_spin.setRange(5, 50)
         default_logo_scale_spin.setValue(self.logo_scale_spin.value())
         default_logo_scale_spin.setSuffix("%")
         default_logo_scale_spin.setToolTip("默认的Logo缩放比例")
-        # ===========================================================
 
         auto_save_check = QCheckBox("自动保存生成记录")
         auto_save_check.setChecked(True)

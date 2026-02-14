@@ -20,7 +20,7 @@ import sqlite3
 import sys
 import tempfile
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -179,11 +179,8 @@ class TestQRCodeDatabase:
         assert loaded_data.notes == "包含所有可选字段的测试"
         assert loaded_data.output_format == "SVG"
 
-    # 在文件顶部确保导入了 patch
-
     def test_save_qrcode_database_error(self, database, sample_qrcode_data):
         """测试数据库错误时的保存"""
-        from unittest.mock import MagicMock, patch
 
         # 使用 patch 来 mock sqlite3.connect
         with patch("sqlite3.connect") as mock_connect:

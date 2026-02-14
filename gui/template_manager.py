@@ -11,7 +11,7 @@
 开源协议：MIT License
 免责声明：本软件按"原样"提供，不作任何明示或暗示的担保
 修改记录：
-版本 1.0.0 2026-01-01 - 码上工坊 - 初始版本创建
+版本 0.9.0 2026-02-11 - 码上工坊 - 初始版本创建
 """
 
 from typing import Dict, Optional
@@ -407,7 +407,7 @@ class TemplateManager(QDialog):
         if "gradient" in config and config["gradient"]:
             lines.append(f"渐变: {config['gradient'][0]} → {config['gradient'][1]}")
 
-        # ==================== 显示Logo设置预览 ====================
+        # 显示Logo设置预览
         if "logo_path" in config and config["logo_path"]:
             import os
 
@@ -421,7 +421,6 @@ class TemplateManager(QDialog):
             else:
                 scale_percent = int(scale)
             lines.append(f"Logo缩放: {scale_percent}%")
-        # ========================================================
 
         return "\n".join(lines)
 

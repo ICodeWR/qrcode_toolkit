@@ -153,8 +153,6 @@ class TestTemplateConstants:
         assert "商务" in categories
         assert len(categories) >= 8
 
-    # ✅ 删除 PRESET_TEMPLATES 测试，因为它已被移除
-
 
 class TestRegexConstants:
     """测试正则表达式常量类"""
@@ -166,8 +164,6 @@ class TestRegexConstants:
         assert re.match(pattern, "#FFF") is not None
         assert re.match(pattern, "#GGGGGG") is None
         assert re.match(pattern, "000000") is None
-
-    # ✅ 删除其他未使用正则的测试
 
 
 class TestUtilityFunctions:
@@ -181,7 +177,6 @@ class TestUtilityFunctions:
 
         ensure_directories()
 
-        # ✅ 修正为实际目录数量
         assert mock_mkdir.call_count >= 3  # APP_DATA_DIR, EXPORTS_DIR, BACKUPS_DIR
         mock_mkdir.assert_called_with(parents=True, exist_ok=True)
 

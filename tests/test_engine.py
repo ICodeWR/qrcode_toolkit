@@ -11,7 +11,7 @@
 开源协议：MIT License
 免责声明：本软件按"原样"提供，不作任何明示或暗示的担保
 修改记录：
-版本 1.0.0 2026-01-01 - 码上工坊 - 初始版本创建
+版本 0.9.0 2026-12-12 - 码上工坊 - 初始版本创建
 """
 
 import os
@@ -124,7 +124,6 @@ class TestQRCodeEngine:
         """测试获取无效的纠错级别（应返回默认值H）"""
         assert qr_engine._get_error_correction("X") == 2  # 默认H
         assert qr_engine._get_error_correction("") == 2  # 默认H
-        # 注意：这里不应该传入None，但为了兼容性我们处理它
         assert qr_engine._get_error_correction(None) == 2  # 默认H
 
     def test_parse_color_valid_6digit(self, qr_engine):
@@ -168,8 +167,6 @@ class TestQRCodeEngine:
         # 测试传入None
         with pytest.raises(ValueError, match="无效的颜色格式"):
             qr_engine._parse_color(None)
-
-    # ... 其他测试方法保持不变 ...
 
     def test_generate_gradient_qr_linear(self, qr_engine, sample_qrcode_data_gradient):
         """测试生成线性渐变二维码"""
@@ -407,7 +404,6 @@ class TestQRCodeEngine:
         result = qr_engine.validate_data_capacity(
             long_data, version=40, error_correction="L"
         )
-        # 这取决于具体实现，我们只检查不抛出异常
 
     def test_validate_data_capacity_invalid_params(self, qr_engine):
         """测试数据容量验证无效参数"""

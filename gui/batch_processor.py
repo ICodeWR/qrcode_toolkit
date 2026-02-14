@@ -911,8 +911,6 @@ class BatchProcessor(QDialog):
         finally:
             self._disconnecting = False
 
-    # ============ 数据加载 ============
-
     def _detect_file_encoding(self, file_path: str) -> str:
         """
         检测文件编码
@@ -1127,8 +1125,6 @@ class BatchProcessor(QDialog):
         }
         return color_map.get(color_name, "#000000")
 
-    # ============ 批量生成信号槽 ============
-
     def _on_batch_progress(self, completed: int, total: int):
         """
         批量生成进度更新槽函数
@@ -1179,11 +1175,6 @@ class BatchProcessor(QDialog):
                     break
                 if self.database.save_qrcode(qr_data):
                     saved_count += 1
-                    # self.database.add_history_record(
-                    #     qr_data.id,
-                    #     "批量生成",
-                    #     f"输出格式: {qr_data.output_format}, 目录: {qr_data.notes or '默认'}",
-                    # )
             print(f"已保存 {saved_count} 条记录到数据库")
             print(
                 f"批量生成统计: 成功={self.batch_current}, 失败={self.batch_failed}, 保存={saved_count}"
@@ -1362,8 +1353,6 @@ class BatchProcessor(QDialog):
         except Exception as e:
             print(f"保存扫描结果失败: {e}")
             return False
-
-    # ============ 其他 ============
 
     def closeEvent(self, event) -> None:
         """关闭事件"""

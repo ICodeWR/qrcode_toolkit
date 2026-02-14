@@ -161,16 +161,9 @@ class TestBatchGenerate:
         batch_processor.foreground_combo.setCurrentText("蓝色")
         batch_processor.background_combo.setCurrentText("白色")
 
-        # 关键修改：直接设置 spin 和 slider 的值，并确保它们一致
+        # 直接设置 spin 和 slider 的值，并确保它们一致
         batch_processor.logo_scale_spin.setValue(25)
         batch_processor.logo_scale_slider.setValue(25)
-
-        # 为了确保值被正确读取，我们可以强制同步一次（可选）
-        # batch_processor.logo_scale_spin.valueChanged.emit(25)
-
-        # 在 test_create_qrcode_data 中，在调用 _create_qrcode_data 前加：
-        print("Spin value:", batch_processor.logo_scale_spin.value())
-        print("Slider value:", batch_processor.logo_scale_slider.value())
 
         monkeypatch.setattr(batch_processor.logo_scale_spin, "value", lambda: 25)
 
@@ -299,7 +292,7 @@ class TestBatchScan:
             batch_processor.on_scan_error("测试错误")
             mock_warning.assert_called_once()
 
-    @patch("gui.batch_processor.QMessageBox")  # ✅ 改成 mock 整个类
+    @patch("gui.batch_processor.QMessageBox")
     @patch("gui.batch_processor.BatchProcessor.save_scan_results")
     def test_on_scan_finish_success(self, mock_save, mock_messagebox, batch_processor):
         """测试扫描完成回调（成功）"""
@@ -313,8 +306,8 @@ class TestBatchScan:
         batch_processor.on_scan_finish(results)
 
         mock_save.assert_called_once_with(results)
-        mock_messagebox.assert_called_once()  # ✅ 验证 QMessageBox 被实例化
-        mock_instance.exec.assert_called_once()  # ✅ 验证 exec 被调用
+        mock_messagebox.assert_called_once()  # 验证 QMessageBox 被实例化
+        mock_instance.exec.assert_called_once()  # 验证 exec 被调用
 
     @patch("gui.batch_processor.QMessageBox.warning")
     @patch("gui.batch_processor.BatchProcessor.save_scan_results")
@@ -449,7 +442,7 @@ class TestProcessingControl:
 
         batch_processor.reset_processing()
 
-        # ✅ 验证状态被重置
+        # 验证状态被重置
         assert batch_processor.is_processing is False
         assert batch_processor.current_task is None
         assert batch_processor.batch_qr_list == []

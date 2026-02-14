@@ -188,8 +188,6 @@ class TestTemplateEditorLoadData:
 class TestTemplateEditorToggleFunctions:
     """测试切换功能"""
 
-    # tests/test_template_editor.py 中的 test_toggle_gradient_checked
-
     def test_toggle_gradient_checked(self, template_editor):
         assert template_editor.gradient_container.isVisible() is False
 

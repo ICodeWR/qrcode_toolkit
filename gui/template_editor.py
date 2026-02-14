@@ -11,7 +11,7 @@
 开源协议：MIT License
 免责声明：本软件按"原样"提供，不作任何明示或暗示的担保
 修改记录：
-版本 1.0.0 2026-01-01 - 码上工坊 - 初始版本创建
+版本 0.9.0 2026-01-01 - 码上工坊 - 初始版本创建
 """
 
 from typing import Dict, Optional
@@ -133,7 +133,7 @@ class TemplateEditor(QDialog):
 
         qrcode_group.setLayout(qrcode_layout)
 
-        # ==================== Logo设置区域 ====================
+        # Logo设置区域
         logo_group = QGroupBox("Logo设置")
         logo_layout = QVBoxLayout()
 
@@ -204,7 +204,6 @@ class TemplateEditor(QDialog):
         # 连接Logo按钮
         self.logo_browse_btn.clicked.connect(self.browse_logo)
         self.logo_clear_btn.clicked.connect(self.clear_logo)
-        # ==================== Logo设置区域结束 ====================
 
         # 颜色设置区域
         color_group = QGroupBox("颜色设置")
@@ -223,9 +222,8 @@ class TemplateEditor(QDialog):
         color_layout.addWidget(self.gradient_check)
 
         # 渐变颜色选择器 - 使用QFrame替代QWidget以获得更好的样式控制
-        from PySide6.QtWidgets import QFrame
 
-        self.gradient_container = QFrame()  # 移除了 parent 参数
+        self.gradient_container = QFrame()
         self.gradient_container.setFrameShape(QFrame.Shape.NoFrame)
         self.gradient_container.setVisible(False)  # 初始隐藏
 
@@ -301,7 +299,7 @@ class TemplateEditor(QDialog):
         ec_index = {"L": 0, "M": 1, "Q": 2, "H": 3}.get(error_correction, 3)
         self.ec_combo.setCurrentIndex(ec_index)
 
-        # ==================== 加载Logo设置 ====================
+        # 加载Logo设置
         logo_path = config.get("logo_path")
         logo_scale = config.get("logo_scale", 0.2)
 
@@ -316,7 +314,6 @@ class TemplateEditor(QDialog):
             self.logo_scale_slider.setValue(scale_percent)
         else:
             self.logo_check.setChecked(False)
-        # ====================================================
 
         # 颜色设置
         color = config.get("color", "#000000")
@@ -396,11 +393,10 @@ class TemplateEditor(QDialog):
             "color": self.foreground_picker.get_color(),
         }
 
-        # ==================== 保存Logo设置 ====================
+        # 保存Logo设置
         if self.logo_check.isChecked() and self.logo_path_edit.text():
             config["logo_path"] = self.logo_path_edit.text()
             config["logo_scale"] = self.logo_scale_spin.value() / 100.0
-        # ====================================================
 
         # 渐变设置
         if self.gradient_check.isChecked():

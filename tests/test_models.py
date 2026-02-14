@@ -7,7 +7,6 @@ QR Toolkit - 二维码工具箱
 协议: MIT License
 """
 
-import json
 from datetime import datetime
 
 import pytest
@@ -21,7 +20,6 @@ class TestQRCodeType:
 
     def test_qrcode_type_values(self):
         """测试QRCodeType枚举值"""
-        # 根据 constants.py，BITCOIN的值是"比特币"
         assert QRCodeType.URL.value == "URL"
         assert QRCodeType.TEXT.value == "文本"
         assert QRCodeType.WIFI.value == "WiFi"
@@ -31,7 +29,7 @@ class TestQRCodeType:
         assert QRCodeType.PHONE.value == "电话"
         assert QRCodeType.LOCATION.value == "地理位置"
         assert QRCodeType.EVENT.value == "日历事件"
-        assert QRCodeType.BITCOIN.value == "比特币"  # 修正为实际值
+        assert QRCodeType.BITCOIN.value == "比特币"
         assert (
             QRCodeType.WHATSAPP.value == "WhatsApp"
         )  # 注意：在constants.py中是"WhatsApp"，不是"WhatsApp消息"
@@ -55,7 +53,6 @@ class TestOutputFormat:
 
     def test_output_format_values(self):
         """测试OutputFormat枚举值"""
-        # 根据 constants.py，OutputFormat有PNG、JPEG、SVG、PDF、GIF、BMP，没有BASE64和EPS
         assert OutputFormat.PNG.value == "PNG"
         assert OutputFormat.JPEG.value == "JPEG"
         assert OutputFormat.SVG.value == "SVG"
@@ -203,7 +200,7 @@ class TestQRCodeData:
 
         assert result["id"] == "test123"
         assert result["data"] == "https://example.com"
-        assert result["qr_type"] == "URL"  # 应该是字符串值，不是枚举
+        assert result["qr_type"] == "URL"
         assert result["version"] == 5
         assert result["error_correction"] == "H"
         assert result["size"] == 10
@@ -237,7 +234,7 @@ class TestQRCodeData:
         data_dict = {
             "id": "test123",
             "data": "测试数据",
-            "qr_type": "文本",  # 使用枚举的实际值，不是枚举名
+            "qr_type": "文本",
             "version": 3,
             "error_correction": "M",
             "size": 8,
@@ -617,7 +614,5 @@ class TestQRCodeData:
         repr_str = repr(qr_data)
         assert "QRCodeData" in repr_str
         assert "id='test123'" in repr_str
-        # repr 中显示的是枚举的repr，不是简单的名字
-        # 所以是 "qr_type=<QRCodeType.TEXT: '文本'>" 而不是 "qr_type=QRCodeType.TEXT"
         assert "qr_type=<QRCodeType.TEXT:" in repr_str
         assert "'文本'>" in repr_str
