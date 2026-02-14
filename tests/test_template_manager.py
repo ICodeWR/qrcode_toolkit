@@ -7,10 +7,9 @@
 功能描述：测试 TemplateManager 对话框的各项功能
 """
 
-import json
 import sys
 from pathlib import Path
-from unittest.mock import MagicMock, Mock, call, patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 from PySide6.QtCore import Qt
