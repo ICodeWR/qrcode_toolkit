@@ -19,7 +19,7 @@
 
 ## 📖 项目简介
 
-**QR Toolkit** 是一款开源的、跨平台的二维码工具箱，提供二维码的**生成**、**扫描**、**批量处理**和**模板管理**等功能。无论是个人日常使用，还是企业批量处理，QR Toolkit 都能为您提供帮助，同时也可作为Python编程学习者的开发实战项目。
+**QR Toolkit** 是一款开源的、跨平台的二维码工具箱，提供二维码的**生成**、**扫描**、**批量处理**和**模板管理**等功能。无论是个人日常使用，还是企业批量处理，QR Toolkit 都能为您提供帮助，同时该项目还可作为Python编程学习者的开发实战项目。
 
 ### 主要特性
 
@@ -29,7 +29,7 @@
 - **批量处理** - 批量生成二维码、批量扫描图片中的二维码
 - **模板管理** - 保存常用配置为模板，快速复用
 - **历史记录** - 自动保存生成记录，支持搜索、加载、删除、导出
-- **数据库支持** - 使用SQLite存储二维码数据、模板和历史记录
+- **数据库支持** - 使用SQLite存储二维码数据和模板
 - **多格式导出** - 支持PNG、JPEG、SVG、PDF、GIF、BMP等多种输出格式
 - **跨平台** - 支持Windows、macOS、Linux
 
@@ -50,6 +50,8 @@
 ```bash
 # 克隆仓库
 git clone https://github.com/ICodeWR/qrcode_toolkit.git
+或
+git clone https://gitee.com/ICodeWR/qrcode_toolkit.git
 cd qrcode_toolkit
 
 # 使用 uv 创建虚拟环境并安装依赖
@@ -65,12 +67,14 @@ uv run python main.py
 ```bash
 # 克隆仓库
 git clone https://github.com/ICodeWR/qrcode_toolkit.git
+或
+git clone https://gitee.com/ICodeWR/qrcode_toolkit.git
 cd qrcode_toolkit
 
 # 创建虚拟环境（可选）
 python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate  # Windows
+# source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate  # Windows
 
 # 安装依赖
 pip install -e .
@@ -82,8 +86,6 @@ python main.py
 ---
 
 ## 界面预览
-
-> 注：截图待补充
 
 | 生成界面 | 扫描界面 | 模板管理 |
 |---------|---------|---------|
@@ -264,14 +266,7 @@ uv build
 
 ## 更新日志
 
-### 版本 1.1.0 (2026-02-11)
-- ✨ **新增**：Logo缩放比例调节功能（5%-50%）
-- ✨ **新增**：数据库兼容性处理，支持旧版数据库自动升级
-- 🔧 **优化**：模板系统支持Logo缩放比例保存与应用
-- 🐛 **修复**：Windows平台摄像头枚举问题
-- 🐛 **修复**：颜色验证函数弃用警告
-
-### 版本 0.9.0 (2026-01-01)
+### 版本 0.9.0 (2026-2-14)
 - **发布**：首个正式版本
 - **功能**：二维码生成、扫描、批量处理、模板管理、历史记录
 - **界面**：完整的主窗口界面、菜单栏、工具栏、停靠窗口
@@ -298,30 +293,6 @@ uv build
 
 本项目采用 **MIT License** 开源协议。
 
-```
-MIT License
-
-Copyright (c) 2026 码上工坊
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
 ---
 
 ## 📞 联系我们
@@ -339,4 +310,10 @@ SOFTWARE.
 
 **如果这个项目对您有帮助，请给一个 ⭐️ 支持！**
 
+<div align="center">
+  <img src="resources/icons/qrcode.jpg" width=300></img>
+</div>
+<strong >码上工坊 © 2026</strong><br>
+<em>让代码为你工作，在创造中学习成长 🚀</em>
+</div>
 </div>
