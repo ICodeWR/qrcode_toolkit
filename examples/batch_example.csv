@@ -1,0 +1,11 @@
+# 格式: 数据内容, 标签1;标签2, 备注信息
+https://example.com, 官网, 公司官方网站
+WIFI:S:MyWiFi;T:WPA;P:password123;;, 办公;WiFi, 访客网络
+BEGIN:VCARD
+FN:张三
+ORG:码上工坊
+TEL:13800138000
+EMAIL:zhangsan@example.com
+END:VCARD, 名片;张三, 技术总监
+邮件内容测试, 个人;重要, 需要回复
+https://gitee.com/icodewr, 开源;项目, QR Toolkit仓库

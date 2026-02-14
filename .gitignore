@@ -1,0 +1,31 @@
+# Python 产生的文件
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# 虚拟环境
+.venv
+
+# 静态检查
+.mypy_cache
+
+# 单元测试
+.pytest_cache
+# 测试数据
+tests/test_data/
+!tests/test_data/.gitkeep
+
+# uv 产生的文件
+uv.lock
+
+# 文档构建
+docs/_build/
+docs/build/
+site/
+
+# 输出测试目录
+output/
+
